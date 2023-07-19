@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply m-4 p-2 bg-blue-950 text-white rounded-md border-solid border-2 border-white 
+    hover:bg-blue-500 hover:cursor-pointer;
+  }
+  .btn-submit {
+    @apply m-4 p-5 w-48 bg-blue-950 text-white font-bold rounded-2xl border-solid border-2 border-white 
+    hover:bg-blue-500 hover:cursor-pointer;
+  }
+  .btn-nav {
+    @apply m-4 p-2 bg-black text-white rounded-md border-solid border-2 border-white 
+    hover:bg-white hover:border-black hover:text-black hover:cursor-pointer;
+  }
+  .btn-main {
+    @apply my-4 p-2 h-10 bg-blue-950 text-white rounded-md border-solid border-2 border-blue-950 
+    hover:bg-blue-500 hover:cursor-pointer;
+  }
+  .btn-accept {
+    @apply mx-1 my-4 p-2 h-10 bg-green-600 rounded-md drop-shadow-md
+    hover:bg-green-900 hover:cursor-pointer hover:text-white;
+  }
+  .btn-reject {
+    @apply mx-1 my-4 p-2 h-10 bg-red-500 rounded-md drop-shadow-md
+    hover:bg-red-900 hover:cursor-pointer hover:text-white;
+  }
+  .btn-pet {
+    @apply my-6 mx-4 bg-green-300 h-[20vh] w-[34vw] md:w-56 md:h-52 flex justify-center items-center rounded-3xl
+  }
+  .input-pet { 
+    @apply appearance-none h-[20vh] w-[34vw] md:w-56 md:h-52 rounded-3xl absolute left-4 bg-transparent
+    hover:cursor-pointer hover:bg-green-950 hover:opacity-50
+    checked:border-8 checked:border-yellow-300
+  }
+  .input-main {
+    @apply indent-2 border-solid border-2 border-blue-950 rounded-md h-9;
+  }
+  .font-title {
+    @apply text-2xl text-white drop-shadow-md
+  }
+}
