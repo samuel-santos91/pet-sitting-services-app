@@ -85,7 +85,7 @@ const SignIn = () => {
         mx-auto mb-8 text-center"
         >
           Find a sitter.
-          <br /> Become a sitter.
+          <br /> Become a bitch.
         </h1>
         <div className=" mx-auto p-5 w-[90vw] min-[450px]:w-96 rounded-3xl bg-white bg-opacity-80">
           <h1 className="mb-6 mt-2 font-bold text-lg">

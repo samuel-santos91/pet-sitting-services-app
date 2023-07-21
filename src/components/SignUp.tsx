@@ -242,5 +242,3 @@ const SignUp = () => {
 
 export default SignUp;
 
-//when clicking in sitter the top is overflowing
-//work on responsiveness

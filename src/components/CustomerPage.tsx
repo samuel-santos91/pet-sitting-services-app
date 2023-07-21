@@ -6,9 +6,6 @@ import { GiHouse } from "react-icons/gi";
 import { MdPets } from "react-icons/md";
 import { BsPersonCircle } from "react-icons/bs";
 
-// import image from "../images/OIU5WW0.jpg"
-// className="bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${image})` }}
-
 import NavBar from "./NavBar";
 
 interface Sitter {
@@ -127,7 +124,7 @@ const CustomerPage = () => {
 
   //POST IN DATABASE
   const submitHandler = () => {
-    fetch("http://localhost:3000/customer/post", {
+    fetch("https://mysql-pet-sitting-service-app-b863b223688c.herokuapp.com/customer/post", {
       method: "POST",
       body: formData,
     })
