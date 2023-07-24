@@ -5,4 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: "/pet-sitting-services-app",
   plugins: [react()],
+  build: {
+    outDir: 'dist', 
+    sourcemap: true, 
+  },
 })

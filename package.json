@@ -1,6 +1,7 @@
 {
   "name": "marketplace-app",
   "private": true,
+  "main": "src/main.tsx",
   "version": "0.0.0",
   "homepage": "https://samuel-santos91.github.io/pet-sitting-services-app",
   "type": "module",

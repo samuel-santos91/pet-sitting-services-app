@@ -9,5 +9,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   </React.StrictMode>,
 )
 
-// POTENTIALLY REMOVE REACT.STRICTMODE AFTERWATER TO AVOID DOUBLE RENDER
+
 
