@@ -23,3 +23,7 @@ function App() {
 }
 
 export default App;
+
+//!!!!!!!!!!!!!!!!!!!!CHANGE TITLE!!!!!!!!!!!!!!!!!!!!
+//change display when no sitters in database
+//check image upload
