@@ -23,7 +23,7 @@ const CustomerRequests = () => {
   //LIST REQUESTS
   useEffect(() => {
     fetch(
-      "https://mysql-pet-sitting-service-app-b863b223688c.herokuapp.com/customer/requests"
+      "https://pet-sitting-service-app-backend.onrender.com/customer/requests"
     )
       .then((response) => {
         return response.json();
@@ -48,7 +48,7 @@ const CustomerRequests = () => {
     const deleteId = e.currentTarget.id;
 
     fetch(
-      "https://mysql-pet-sitting-service-app-b863b223688c.herokuapp.com/customer/delete",
+      "https://pet-sitting-service-app-backend.onrender.com/customer/delete",
       {
         method: "POST",
         headers: {

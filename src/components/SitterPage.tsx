@@ -25,7 +25,7 @@ const SitterPage = () => {
   //AUTHENTICATION
   useEffect(() => {
     fetch(
-      "https://mysql-pet-sitting-service-app-b863b223688c.herokuapp.com/sitter",
+      "https://pet-sitting-service-app-backend.onrender.com/sitter",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ const SitterPage = () => {
   //REQUESTS LIST
   useEffect(() => {
     fetch(
-      "https://mysql-pet-sitting-service-app-b863b223688c.herokuapp.com/sitter/requests"
+      "https://pet-sitting-service-app-backend.onrender.com/sitter/requests"
     )
       .then((response) => {
         return response.json();
@@ -77,7 +77,7 @@ const SitterPage = () => {
     const request_id = e.currentTarget.name;
 
     fetch(
-      "https://mysql-pet-sitting-service-app-b863b223688c.herokuapp.com/sitter/request_answer",
+      "https://pet-sitting-service-app-backend.onrender.com/sitter/request_answer",
       {
         method: "POST",
         headers: {

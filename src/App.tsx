@@ -24,8 +24,7 @@ function App() {
 
 export default App;
 
-//!!!!!!!!!!!!!!!!!!!!CHANGE TITLE!!!!!!!!!!!!!!!!!!!!
+
 //change display when no sitters in database
 //check image upload
-//deploy on git pages
-//tsc && npm install ? (server json package file)
+

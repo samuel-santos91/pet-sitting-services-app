@@ -44,7 +44,7 @@ const CustomerPage = () => {
   //AUTHENTICATION
   useEffect(() => {
     fetch(
-      "https://mysql-pet-sitting-service-app-b863b223688c.herokuapp.com/customer",
+      "https://pet-sitting-service-app-backend.onrender.com/customer",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -69,7 +69,7 @@ const CustomerPage = () => {
   //LIST OF SITTERS
   useEffect(() => {
     fetch(
-      "https://mysql-pet-sitting-service-app-b863b223688c.herokuapp.com/customer/sitters"
+      "https://pet-sitting-service-app-backend.onrender.com/customer/sitters"
     )
       .then((response) => {
         return response.json();
@@ -124,7 +124,7 @@ const CustomerPage = () => {
 
   //POST IN DATABASE
   const submitHandler = () => {
-    fetch("https://mysql-pet-sitting-service-app-b863b223688c.herokuapp.com/customer/post", {
+    fetch("https://pet-sitting-service-app-backend.onrender.com/customer/post", {
       method: "POST",
       body: formData,
     })

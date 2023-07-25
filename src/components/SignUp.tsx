@@ -50,7 +50,7 @@ const SignUp = () => {
     e.preventDefault();
 
     fetch(
-      "https://mysql-pet-sitting-service-app-b863b223688c.herokuapp.com/sign-up",
+      "https://pet-sitting-service-app-backend.onrender.com/sign-up",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
