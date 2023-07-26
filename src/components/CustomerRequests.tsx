@@ -138,11 +138,14 @@ const CustomerRequests = () => {
                 </p>
                 <p>
                   <strong>Date of request:</strong>{" "}
-                  {new Date(request.created_at.slice(0, 10))
-                    .toLocaleDateString()
-                    .split("-")
-                    .reverse()
-                    .join("/")}
+                  {request.created_at
+                    ? new Date(request.created_at.slice(0, 10))
+                        .toLocaleDateString()
+                        .split("-")
+                        .reverse()
+                        .join("/")
+                    : "N/A" 
+                  }
                 </p>
               </div>
             </div>
