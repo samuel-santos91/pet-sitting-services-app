@@ -125,7 +125,7 @@ const SitterPage = () => {
                 {request.image_path ? (
                   <img
                     className="mx-auto mb-2 rounded-xl w-40 h-40 object-cover border-2 border-blue-950"
-                    src={`http://localhost:3000/${request.image_path.slice(7)}`}
+                    src={`https://pet-sitting-service-app.netlify.app/${request.image_path.slice(7)}`}
                     alt="picture of the pet"
                   />
                 ) : null}
