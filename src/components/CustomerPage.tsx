@@ -257,7 +257,7 @@ const CustomerPage = () => {
           </section>
         ) : (
           <section className="mb-20 flex flex-col overflow-y-hidden overflow-scroll items-center w-full sm:w-[70vw] h-[30rem]">
-            <div className="flex justify-center w-full">
+            <div className="flex w-full">
               {sitters.map((sitter) => (
                 <label
                   className="relative inline-flex items-center"
