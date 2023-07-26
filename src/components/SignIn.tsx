@@ -2,6 +2,8 @@ import { FcHighPriority } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+import ClipLoader from "react-spinners/ClipLoader";
+
 interface UserData {
   email: string;
   password: string;
@@ -19,6 +21,7 @@ const SignIn = () => {
     }
   }, []);
 
+  const [loading, setLoading] = useState<boolean>(false);
   const [userExists, setUserExists] = useState<boolean>(false);
   const [userData, setUserData] = useState<UserData>({
     email: "",
@@ -35,17 +38,16 @@ const SignIn = () => {
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
 
-    fetch(
-      "https://pet-sitting-service-app-backend.onrender.com/log-in",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
-        credentials: "include",
-      }
-    )
+    fetch("https://pet-sitting-service-app-backend.onrender.com/log-in", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+      credentials: "include",
+    })
       .then((response) => {
+        setLoading(false);
         if (response.ok) {
           return response.json();
         } else if (response.status === 400) {
@@ -56,6 +58,7 @@ const SignIn = () => {
         }
       })
       .then((data) => {
+        setLoading(false);
         if (data.Login) {
           localStorage.setItem("token", data.token);
           if (data.registeredUser !== undefined) {
@@ -79,6 +82,14 @@ const SignIn = () => {
 
   return (
     <div className="h-screen">
+      {/* Loading... */}
+      {loading ? <div
+        className="fixed inset-0 bg-gray-800 bg-opacity-70 flex items-center 
+      justify-center overflow-y-scroll z-50 border-b-[1rem] border-b-gray-800 border-opacity-10"
+      >
+        <ClipLoader color="#36d7b7" loading size={64} />
+      </div> : null}
+
       <div className="relative top-[10vh]">
         <h1
           className="font-caprasimo text-[10vw] min-[650px]:text-7xl text-yellow-300 text-stroke-2-black

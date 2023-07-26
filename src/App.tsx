@@ -24,7 +24,6 @@ function App() {
 
 export default App;
 
-
-//change display when no sitters in database
-//check image upload
+//loading animation
+//created_at in database
 
