@@ -43,14 +43,11 @@ const CustomerPage = () => {
 
   //AUTHENTICATION
   useEffect(() => {
-    fetch(
-      "https://pet-sitting-service-app-backend.onrender.com/customer",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    fetch("https://pet-sitting-service-app-backend.onrender.com/customer", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => {
         return response.json();
       })
@@ -124,10 +121,13 @@ const CustomerPage = () => {
 
   //POST IN DATABASE
   const submitHandler = () => {
-    fetch("https://pet-sitting-service-app-backend.onrender.com/customer/post", {
-      method: "POST",
-      body: formData,
-    })
+    fetch(
+      "https://pet-sitting-service-app-backend.onrender.com/customer/post",
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
       .then((response) => {
         if (response.ok) {
           return response.text();
@@ -249,49 +249,57 @@ const CustomerPage = () => {
         </section>
 
         <label className="mb-6 font-title font-bold">Choose a sitter</label>
-        <section className="mb-20 flex flex-col overflow-y-hidden overflow-scroll items-center w-full sm:w-[70vw] h-[30rem]">
-          <div className="flex w-full">
-            {sitters.map((sitter) => (
-              <label
-                className="relative inline-flex items-center"
-                key={sitter.id}
-              >
-                <div className="mt-4 mx-2 p-6 w-[22.5rem] h-[28rem] flex flex-col items-center rounded-3xl bg-green-300">
-                  <div className="mb-3 flex flex-col items-center">
-                    <BsPersonCircle size={150} />
-                    <p className="mt-6">
-                      {sitter.first_name} {sitter.last_name}
-                    </p>
+        {sitters.length === 0 ? (
+          <section className="h-64 flex items-center">
+            <div className="relative text-center text-xl h-20 bg-green-300 flex items-center px-5 rounded-xl">
+              <p>NO SITTERS REGISTERED</p>
+            </div>
+          </section>
+        ) : (
+          <section className="mb-20 flex flex-col overflow-y-hidden overflow-scroll items-center w-full sm:w-[70vw] h-[30rem]">
+            <div className="flex w-full">
+              {sitters.map((sitter) => (
+                <label
+                  className="relative inline-flex items-center"
+                  key={sitter.id}
+                >
+                  <div className="mt-4 mx-2 p-6 w-[22.5rem] h-[28rem] flex flex-col items-center rounded-3xl bg-green-300">
+                    <div className="mb-3 flex flex-col items-center">
+                      <BsPersonCircle size={150} />
+                      <p className="mt-6">
+                        {sitter.first_name} {sitter.last_name}
+                      </p>
+                    </div>
+                    <div className="mt-2 flex font-bold italic text-sm">
+                      <p className="mr-3">
+                        <span className="font-normal">Hour rate:</span> $
+                        {sitter.hour_rate}
+                      </p>
+                      <p>
+                        <span className="font-normal">Day rate:</span> $
+                        {sitter.day_rate}
+                      </p>
+                    </div>
+                    <div className="mt-3 italic text-center">
+                      "{sitter.summary}"
+                    </div>
                   </div>
-                  <div className="mt-2 flex font-bold italic text-sm">
-                    <p className="mr-3">
-                      <span className="font-normal">Hour rate:</span> $
-                      {sitter.hour_rate}
-                    </p>
-                    <p>
-                      <span className="font-normal">Day rate:</span> $
-                      {sitter.day_rate}
-                    </p>
-                  </div>
-                  <div className="mt-3 italic text-center">
-                    "{sitter.summary}"
-                  </div>
-                </div>
-                <input
-                  onChange={dataHandler}
-                  className="appearance-none w-[22.5rem] h-[28rem] rounded-3xl absolute translate-y-2 left-1/2 -translate-x-1/2 bg-transparent
+                  <input
+                    onChange={dataHandler}
+                    className="appearance-none w-[22.5rem] h-[28rem] rounded-3xl absolute translate-y-2 left-1/2 -translate-x-1/2 bg-transparent
                   hover:bg-green-950 hover:opacity-50 hover:cursor-pointer 
                   checked:border-8 checked:border-yellow-300"
-                  type="radio"
-                  name="sitter"
-                  id={sitter.last_name}
-                  value={sitter.first_name}
-                  required
-                />
-              </label>
-            ))}
-          </div>
-        </section>
+                    type="radio"
+                    name="sitter"
+                    id={sitter.last_name}
+                    value={sitter.first_name}
+                    required
+                  />
+                </label>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mb-10 flex flex-col items-center">
           <label className="font-title font-bold mb-6" htmlFor="message">
