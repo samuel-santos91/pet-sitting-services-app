@@ -24,14 +24,11 @@ const SitterPage = () => {
 
   //AUTHENTICATION
   useEffect(() => {
-    fetch(
-      "https://pet-sitting-service-app-backend.onrender.com/sitter",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    fetch("https://pet-sitting-service-app-backend.onrender.com/sitter", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => {
         return response.json();
       })
@@ -149,11 +146,13 @@ const SitterPage = () => {
                 ) : null}
                 <p>
                   <strong>Date of request:</strong>{" "}
-                  {new Date(request.created_at.slice(0, 10))
-                    .toLocaleDateString()
-                    .split("-")
-                    .reverse()
-                    .join("/")}
+                  {request.created_at
+                    ? new Date(request.created_at.slice(0, 10))
+                        .toLocaleDateString()
+                        .split("-")
+                        .reverse()
+                        .join("/")
+                    : "N/A"}
                 </p>
                 {request.status === "accepted" ? (
                   <p className="mt-2 text-green-600 font-bold">ACCEPTED</p>
@@ -189,5 +188,3 @@ const SitterPage = () => {
 };
 
 export default SitterPage;
-
-
