@@ -114,7 +114,7 @@ const SitterPage = () => {
         </h1>
 
         {requests.length === 0 ? (
-          <div className="relative top-64 text-center text-3xl">
+          <div className="relative top-64 text-center text-3xl text-white">
             <p>NO REQUESTS FOUND</p>
           </div>
         ) : (
