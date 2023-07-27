@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { TiDelete } from "react-icons/ti";
 
+import ClipLoader from "react-spinners/ClipLoader";
+
 interface Request {
   care_type: string;
   created_at: string;
@@ -15,6 +17,8 @@ interface Request {
 
 const CustomerRequests = () => {
   const navigate = useNavigate();
+  
+  const [loading, setLoading] = useState<boolean>(false);
   const [requests, setRequests] = useState<Request[]>([]);
   const [deleteAnimationId, setDeleteAnimationId] = useState<number | null>(
     null
@@ -22,13 +26,16 @@ const CustomerRequests = () => {
 
   //LIST REQUESTS
   useEffect(() => {
+    setLoading(true);
     fetch(
       "https://pet-sitting-service-app-backend.onrender.com/customer/requests"
     )
       .then((response) => {
+        setLoading(false);
         return response.json();
       })
       .then((data) => {
+        setLoading(false);
         const userName = localStorage.getItem("name");
         const req = data.userRequests;
         const userRequest = req[0].filter(
@@ -85,6 +92,16 @@ const CustomerRequests = () => {
       className="fixed inset-0 bg-gray-800 bg-opacity-95 flex items-center 
       justify-center overflow-y-scroll z-50 border-b-[1rem] border-b-gray-800 border-opacity-10"
     >
+      {/* Loading... */}
+      {loading ? (
+        <div
+          className="fixed inset-0 bg-gray-800 bg-opacity-70 flex items-center 
+      justify-center overflow-y-scroll z-50 border-b-[1rem] border-b-gray-800 border-opacity-10"
+        >
+          <ClipLoader color="#36d7b7" loading size={64} />
+        </div>
+      ) : null}
+
       {requests.length === 0 ? (
         <div className="relative text-center text-3xl text-white">
           <p>NO REQUESTS FOUND</p>
@@ -144,8 +161,7 @@ const CustomerRequests = () => {
                         .split("-")
                         .reverse()
                         .join("/")
-                    : "N/A" 
-                  }
+                    : "N/A"}
                 </p>
               </div>
             </div>

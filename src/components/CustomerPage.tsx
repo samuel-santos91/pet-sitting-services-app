@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
+
 import { TbDog } from "react-icons/tb";
 import { TbCat } from "react-icons/tb";
 import { GiHouse } from "react-icons/gi";
 import { MdPets } from "react-icons/md";
 import { BsPersonCircle } from "react-icons/bs";
+
+import ClipLoader from "react-spinners/ClipLoader";
 
 import NavBar from "./NavBar";
 
@@ -31,6 +34,7 @@ const CustomerPage = () => {
   const type = localStorage.getItem("type");
   const userName = localStorage.getItem("name");
 
+  const [loading, setLoading] = useState<boolean>(false);
   const [sitters, setSitters] = useState<Sitter[]>([]);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -121,6 +125,7 @@ const CustomerPage = () => {
 
   //POST IN DATABASE
   const submitHandler = () => {
+    setLoading(true);
     fetch(
       "https://pet-sitting-service-app-backend.onrender.com/customer/post",
       {
@@ -129,6 +134,7 @@ const CustomerPage = () => {
       }
     )
       .then((response) => {
+        setLoading(false);
         if (response.ok) {
           return response.text();
         } else if (response.status === 400) {
@@ -136,6 +142,7 @@ const CustomerPage = () => {
         }
       })
       .then((data) => {
+        setLoading(false);
         console.log(data);
       })
       .catch((error) => console.error(error));
@@ -143,6 +150,16 @@ const CustomerPage = () => {
 
   return (
     <div>
+      {/* Loading... */}
+      {loading ? (
+        <div
+          className="fixed inset-0 bg-gray-800 bg-opacity-70 flex items-center 
+      justify-center overflow-y-scroll z-50 border-b-[1rem] border-b-gray-800 border-opacity-10"
+        >
+          <ClipLoader color="#36d7b7" loading size={64} />
+        </div>
+      ) : null}
+
       <NavBar />
       <form
         onSubmit={submitHandler}

@@ -2,6 +2,8 @@ import { FcHighPriority } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 
+import ClipLoader from "react-spinners/ClipLoader";
+
 interface UserData {
   firstName: string;
   lastName: string;
@@ -14,6 +16,10 @@ interface UserData {
 }
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const scrollToRef = useRef<HTMLDivElement>(null);
+
+  const [loading, setLoading] = useState<boolean>(false);
   const [styleCenter, setStyleCenter] = useState<boolean>(true);
   const [userExists, setUserExists] = useState<boolean>(false);
   const [sitter, setSitter] = useState<boolean>(false);
@@ -27,8 +33,6 @@ const SignUp = () => {
     hourRate: 0,
     dayRate: 0,
   });
-  const navigate = useNavigate();
-  const scrollToRef = useRef<HTMLDivElement>(null);
 
   const userDataHandler = (
     e:
@@ -48,16 +52,15 @@ const SignUp = () => {
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
 
-    fetch(
-      "https://pet-sitting-service-app-backend.onrender.com/sign-up",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
-      }
-    )
+    fetch("https://pet-sitting-service-app-backend.onrender.com/sign-up", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    })
       .then((response) => {
+        setLoading(false);
         if (response.ok) {
           return response.text();
         } else if (response.status === 400) {
@@ -68,6 +71,7 @@ const SignUp = () => {
         }
       })
       .then((data) => {
+        setLoading(false);
         navigate("/");
         console.log(data);
       })
@@ -88,6 +92,16 @@ const SignUp = () => {
       }  
          my-3 mx-auto p-5 w-[90vw] min-[450px]:w-96 rounded-3xl bg-white bg-opacity-80`}
     >
+      {/* Loading... */}
+      {loading ? (
+        <div
+          className="fixed inset-0 bg-gray-800 bg-opacity-70 flex items-center 
+      justify-center overflow-y-scroll z-50 border-b-[1rem] border-b-gray-800 border-opacity-10"
+        >
+          <ClipLoader color="#36d7b7" loading size={64} />
+        </div>
+      ) : null}
+
       <h1 className="mb-6 mt-2 font-bold text-lg">Create an account</h1>
       {userExists ? (
         <div className="mx-auto mb-4 px-2 flex items-center bg-red-200 h-20 w-72 rounded-md">
@@ -241,4 +255,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
