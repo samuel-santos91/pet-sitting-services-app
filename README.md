@@ -1,6 +1,8 @@
 # pet-sitting-services-app
 ## Application to request services for your pet 
 
+### * Styled with Tailwind CSS *
+
 ### Log into your account or sign in if you don't have one <br>
 <img width="500" alt="Screenshot 2023-08-03 at 20 47 04" src="https://github.com/samuel-santos91/pet-sitting-services-app/assets/107240729/97cee252-fe3f-48a7-b8bb-a7a0d7ce6ee3">
 <img width="500" alt="Screenshot 2023-08-03 at 20 47 23" src="https://github.com/samuel-santos91/pet-sitting-services-app/assets/107240729/294a6ce2-6ac6-4fbf-ac04-b824955a582f">
