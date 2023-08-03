@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import NavBar from "./NavBar";
+import serverUrl from "../config/serverUrl";
 
 interface Request {
   care_type: string;
@@ -24,7 +26,7 @@ const SitterPage = () => {
 
   //AUTHENTICATION
   useEffect(() => {
-    fetch("https://pet-sitting-service-app-backend.onrender.com/sitter", {
+    fetch(`${serverUrl}/sitter`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -47,7 +49,7 @@ const SitterPage = () => {
   //REQUESTS LIST
   useEffect(() => {
     fetch(
-      "https://pet-sitting-service-app-backend.onrender.com/sitter/requests"
+      `${serverUrl}/sitter/requests`
     )
       .then((response) => {
         return response.json();
@@ -74,7 +76,7 @@ const SitterPage = () => {
     const request_id = e.currentTarget.name;
 
     fetch(
-      "https://pet-sitting-service-app-backend.onrender.com/sitter/request_answer",
+      `${serverUrl}/sitter/request_answer`,
       {
         method: "POST",
         headers: {
@@ -125,7 +127,7 @@ const SitterPage = () => {
                 {request.image_path ? (
                   <img
                     className="mx-auto mb-2 rounded-xl w-40 h-40 object-cover border-2 border-blue-950"
-                    src={`https://pet-sitting-service-app-backend.onrender.com/${request.image_path.slice(7)}`}
+                    src={`${serverUrl}/${request.image_path.slice(7)}`}
                     alt="picture of the pet"
                   />
                 ) : null}

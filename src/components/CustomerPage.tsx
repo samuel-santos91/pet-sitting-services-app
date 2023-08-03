@@ -6,10 +6,10 @@ import { TbCat } from "react-icons/tb";
 import { GiHouse } from "react-icons/gi";
 import { MdPets } from "react-icons/md";
 import { BsPersonCircle } from "react-icons/bs";
-
 import ClipLoader from "react-spinners/ClipLoader";
 
 import NavBar from "./NavBar";
+import serverUrl from '../config/serverUrl';
 
 interface Sitter {
   id: number;
@@ -47,7 +47,7 @@ const CustomerPage = () => {
 
   //AUTHENTICATION
   useEffect(() => {
-    fetch("https://pet-sitting-service-app-backend.onrender.com/customer", {
+    fetch(`${serverUrl}/customer`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -70,7 +70,7 @@ const CustomerPage = () => {
   //LIST OF SITTERS
   useEffect(() => {
     fetch(
-      "https://pet-sitting-service-app-backend.onrender.com/customer/sitters"
+      `${serverUrl}/customer/sitters`
     )
       .then((response) => {
         return response.json();
@@ -127,7 +127,7 @@ const CustomerPage = () => {
   const submitHandler = () => {
     setLoading(true);
     fetch(
-      "https://pet-sitting-service-app-backend.onrender.com/customer/post",
+      `${serverUrl}/customer/post`,
       {
         method: "POST",
         body: formData,

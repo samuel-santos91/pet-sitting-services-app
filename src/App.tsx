@@ -24,6 +24,4 @@ function App() {
 
 export default App;
 
-//loading animation
-//created_at in database
 

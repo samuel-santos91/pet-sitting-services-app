@@ -1,8 +1,9 @@
 import { FcHighPriority } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import ClipLoader from "react-spinners/ClipLoader";
+
+import serverUrl from "../config/serverUrl";
 
 interface UserData {
   email: string;
@@ -40,7 +41,7 @@ const SignIn = () => {
     e.preventDefault();
     setLoading(true);
 
-    fetch("https://pet-sitting-service-app-backend.onrender.com/log-in", {
+    fetch(`${serverUrl}/log-in`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),

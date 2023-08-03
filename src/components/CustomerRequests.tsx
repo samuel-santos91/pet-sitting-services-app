@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { TiDelete } from "react-icons/ti";
-
 import ClipLoader from "react-spinners/ClipLoader";
+
+import serverUrl from "../config/serverUrl";
 
 interface Request {
   care_type: string;
@@ -28,7 +29,7 @@ const CustomerRequests = () => {
   useEffect(() => {
     setLoading(true);
     fetch(
-      "https://pet-sitting-service-app-backend.onrender.com/customer/requests"
+      `${serverUrl}/customer/requests`
     )
       .then((response) => {
         setLoading(false);
@@ -55,7 +56,7 @@ const CustomerRequests = () => {
     const deleteId = e.currentTarget.id;
 
     fetch(
-      "https://pet-sitting-service-app-backend.onrender.com/customer/delete",
+      `${serverUrl}/customer/delete`,
       {
         method: "POST",
         headers: {
