@@ -18,6 +18,7 @@
 
 ## Frontend built with React.js
 ## Backend built with Express.js
+Refer to https://github.com/samuel-santos91/pet-sitting-services-app-backend
 ## Database built with MySQL
 
 ## Prerequisites
