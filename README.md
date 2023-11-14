@@ -1,8 +1,18 @@
 # pet-sitting-services-app
-## Application to request services for your pet 
+## Description
+This application mocks an pet sitting service exchange
+### Purpose
+* The purpose of this project was to practice building a full stack application
+### Tech Stack
+#### FRONTEND
+* React.js
+* Tailwind CSS
+#### BACKEND
+* Express.js
+#### DATABASE
+* MySQL
 
-### * Styled with Tailwind CSS *
-
+## Preview
 ### Log into your account or sign in if you don't have one <br>
 <img width="500" alt="Screenshot 2023-08-03 at 20 47 04" src="https://github.com/samuel-santos91/pet-sitting-services-app/assets/107240729/97cee252-fe3f-48a7-b8bb-a7a0d7ce6ee3">
 <img width="500" alt="Screenshot 2023-08-03 at 20 47 23" src="https://github.com/samuel-santos91/pet-sitting-services-app/assets/107240729/294a6ce2-6ac6-4fbf-ac04-b824955a582f">
@@ -16,17 +26,43 @@
 ### As a sitter choose to accept or reject each request <br>
 <img width="500" alt="Screenshot 2023-08-03 at 20 52 39" src="https://github.com/samuel-santos91/pet-sitting-services-app/assets/107240729/867393d4-d3c0-48ac-a545-db7a3b0cd2b4">
 
-## Frontend built with React.js
-## Backend built with Express.js
+## About
+### Sections
+* There are four different sections in this app:
+  * Log in/ Sign in page
+  * Customer's page
+  * Sitter's page
+  * Requests page
+* You can log in as a user/sitter or create an account
+* Users make a request by choosing:
+  * type of pet
+  * to upload a picture of your pet
+  * type of service
+  * sitter
+* The sitter will have the request listed on his requests page and can choose to accept it 
+### Features
+* All pictures are saved on the server
+* All the request are saved in a <strong>MySQL</strong> database
+* When the request is accepted or reject, the status column in the database is updated
+* When user logs in, the server generates a <strong>JWT</strong> token that is stored in the <strong>Local Storage</strong>
+
+## Json Web Token(JWT)
+This application uses <strong>JWT</strong>
+* Why <strong>JWT</strong>?
+  * We make sure the user who is sending requests to your server is the same user who logged in during authentication
+  * Instead of storing information on the server after authentication, JWT creates a JSON web token and encodes, sterilizes, and adds a signature with a secret key that cannot be tampered with
+  * This key is sent back to the browser. Each time a request is sent, it verifies and sends the response back.
+  
+## Backend repository
 Refer to https://github.com/samuel-santos91/pet-sitting-services-app-backend
-## Database built with MySQL
 
 ## Prerequisites
 
 ### Install Node JS
-Refer to https://nodejs.org/en/ to install nodejs
+Refer to https://nodejs.org/en/
 
 ### Install MySQL
+Refer to https://dev.mysql.com/downloads/installer/
 
 ## Cloning and Running the Application in local
 
