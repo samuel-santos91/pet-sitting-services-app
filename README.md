@@ -40,7 +40,8 @@ This application mocks an pet sitting service exchange
   * to upload a picture of your pet
   * type of service
   * sitter
-* The sitter will have the request listed on his requests page and can choose to accept it 
+* Users can delete the request
+* The sitter will have the request listed on his requests page and can choose to accept or decline it
 ### Features
 * All pictures are saved on the server
 * All the request are saved in a <strong>MySQL</strong> database
