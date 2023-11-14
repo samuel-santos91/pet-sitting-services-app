@@ -6,6 +6,7 @@ This application mocks an pet sitting service exchange
 ### Tech Stack
 #### FRONTEND
 * React.js
+* TypeScript
 * Tailwind CSS
 #### BACKEND
 * Express.js
