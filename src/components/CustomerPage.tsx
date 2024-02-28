@@ -9,7 +9,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import NavBar from "./NavBar";
-import serverUrl from '../config/serverUrl';
+import serverUrl from "../config/serverUrl";
 
 interface Sitter {
   id: number;
@@ -69,9 +69,7 @@ const CustomerPage = () => {
 
   //LIST OF SITTERS
   useEffect(() => {
-    fetch(
-      `${serverUrl}/customer/sitters`
-    )
+    fetch(`${serverUrl}/customer/sitters`)
       .then((response) => {
         return response.json();
       })
@@ -124,15 +122,14 @@ const CustomerPage = () => {
   }
 
   //POST IN DATABASE
-  const submitHandler = () => {
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     setLoading(true);
-    fetch(
-      `${serverUrl}/customer/post`,
-      {
-        method: "POST",
-        body: formData,
-      }
-    )
+    fetch(`${serverUrl}/customer/post`, {
+      method: "POST",
+      body: formData,
+    })
       .then((response) => {
         setLoading(false);
         if (response.ok) {
@@ -143,6 +140,7 @@ const CustomerPage = () => {
       })
       .then((data) => {
         setLoading(false);
+        navigate("/customer/requests")
         console.log(data);
       })
       .catch((error) => console.error(error));
