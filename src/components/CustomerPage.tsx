@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate, Outlet } from "react-router-dom";
 
 import { TbDog } from "react-icons/tb";
@@ -29,6 +30,7 @@ interface RequestData {
 
 const CustomerPage = () => {
   const navigate = useNavigate();
+  const formRef = React.useRef<HTMLFormElement | null>(null);
 
   const token = localStorage.getItem("token");
   const type = localStorage.getItem("type");
@@ -140,7 +142,9 @@ const CustomerPage = () => {
       })
       .then((data) => {
         setLoading(false);
-        navigate("/customer/requests")
+        navigate("/customer/requests");
+        formRef.current?.reset();
+
         console.log(data);
       })
       .catch((error) => console.error(error));
@@ -160,6 +164,7 @@ const CustomerPage = () => {
 
       <NavBar />
       <form
+        ref={formRef}
         onSubmit={submitHandler}
         className="relative top-36 flex flex-col items-center"
       >
